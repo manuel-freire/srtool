@@ -1,0 +1,56 @@
+[{
+        "name": "acm_dl",
+        "method": "get-html",
+        "site": "https://dl.acm.org/action/doSearch",
+        "bibsite": "https://dl.acm.org/action/exportCiteProcCitation",
+        "query": [
+            "fillQuickSearch=false",
+            "target=advanced",
+            "expand=dl",
+            "AfterYear=2018",
+            "BeforeYear=2022",
+            "AllField=Title:(serious game) AND Title:(applied game) AND Title:(educational game)",
+            "startPage=0",
+            "pageSize=50"
+        ],
+        "count": "span.result__count",
+        "pageExp": "startPage=0",
+        "pageStart": "startPage=",
+        "pageSize": 50,
+        "item": "li.search__item",
+        "selectors": {
+            "title": "h5.issue-item__title",
+            "authors": "ul[aria-label=authors]",
+            "date": "div.bookPubDate",
+            "source": "span.epub-section__title",
+            "doi": "a.issue-item__doi"
+        },
+        "comment": "only returns results for 1st 2000 items"
+    },
+    {
+        "name": "ieee_xplore",
+        "method": "post-csv",
+        "site": "https://ieeexplore.ieee.org/rest/search/export-csv",
+        "query": {
+            "action": "search",
+            "newsearch": true,
+            "matchBoolean": true,
+            "queryText": "(\"All Metadata\":serious game) AND (\"All Metadata\":applied game) AND (\"All Metadata\":educational game)",
+            "highlight": true,
+            "returnFacets": ["ALL"],
+            "returnType": "SEARCH",
+            "matchPubs": true
+        },
+        "columns": {
+            "title": "Document Title",
+            "authors": "Authors",
+            "date": "Publication Year",
+            "source": "Publication Title",
+            "doi": "DOI",
+            "pubtype": "Document Identifier",
+            "abstract": "Abstract"
+
+        },
+        "comment": "only returns results for 1st 2000 items"
+    }
+]
